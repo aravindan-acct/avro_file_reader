@@ -22,6 +22,7 @@ def process_json():
 def home():
 	if request.method == 'GET':
 		data = avro_link["link"]
+		print(type(data))
 		content = avro_output(data)
 		print(type(content))
 		return content
