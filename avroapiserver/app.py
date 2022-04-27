@@ -2,6 +2,7 @@
 # import necessary libraries and functions
 from flask import Flask, jsonify, request
 from avro_reader import avro_output
+import json
 # creating a Flask app
 app = Flask(__name__)
 # on the terminal type: curl http://127.0.0.1:5000/
@@ -23,7 +24,8 @@ def home():
 	if request.method == 'GET':
 		data = avro_link["link"]
 		print(type(data))
-		content = avro_output(data)
+		link_url_dict = json.loads(data)
+		content = avro_output(link_url_dict["fileUrl"])
 		print(type(content))
 		return content
 
